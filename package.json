@@ -1,0 +1,24 @@
+{
+  "name": "advanced-seo-intelligence-crawler",
+  "version": "0.1.0",
+  "private": true,
+  "author": "Bibas Gautam",
+  "license": "MIT",
+  "description": "Scalable SEO SaaS crawler covering technical, semantic, structured-data and performance analysis.",
+  "packageManager": "pnpm@9.0.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n web,api,worker -c blue,green,magenta \"pnpm --filter web dev\" \"pnpm --filter api dev\" \"pnpm --filter crawler-worker dev\"",
+    "build": "pnpm -r build",
+    "start": "concurrently -n web,api,worker -c blue,green,magenta \"pnpm --filter web start\" \"pnpm --filter api start\" \"pnpm --filter crawler-worker start\"",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "lint": "pnpm -r lint"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
